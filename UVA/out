@@ -1,0 +1,33 @@
+here now = 7
+	push: 4
+	7 -> 4
+	push: 5
+	7 -> 5
+new_layer:
+	4 5 
+
+4
+here now = 4
+	push: 3
+	4 -> 3
+	push: 6
+	4 -> 6
+here now = 5
+	push: 2
+	5 -> 2
+	push: 8
+	5 -> 8
+new_layer:
+	3 6 2 8 
+
+8
+here now = 3
+	push: 9
+	3 -> 9
+here now = 6
+	push: 1
+	2 -> 1
+new_layer:
+	9 1 
+
+10
