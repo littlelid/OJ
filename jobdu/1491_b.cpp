@@ -4,7 +4,8 @@
 #include<string.h>
 #include<sstream>
 using namespace std;
-long long  power(int n);
+int power(int n);
+string Int_to_String(int n);
 int main(void)
 {
     string n;
@@ -42,18 +43,45 @@ int main(void)
             
             }
         }
+        stringstream ss;
+        ss << n;
+        int num;
+        ss >> num;
+        int t_ans = 0;
+        for(int i = 1; i <= num; i++ )
+        {
+            string tmp = Int_to_String(i);
+            for(int j = 0; j < tmp.size(); j++)
+            {
+               if(tmp[j] == '1' || tmp[j] == '2') t_ans += 1;
+        
+            }
+        }
         cout << ans << endl; 
+        cout << t_ans % 20123 << endl; 
     
     }
 
 }
-
-long long   power(int n)
+string Int_to_String(int n)
 {
-    if (n == 0) return 1;
-    if (n == 1) return 10;
-    if(n % 2 == 1)
-        return power(n /2) * power(n /2) * 10 % 20123;
+    ostringstream stream;
+    stream<<n;  //n为int类型
+    return stream.str();
+}
+
+int power(int n)
+{
+    if(n == 0) return 1;
+
+    if(n % 2 == 0) 
+    {
+        int temp = power(n / 2) % 20123;
+        return (temp * temp) % 20123;
+    }    
     else
-        return power(n /2) * power(n /2) % 20123;
+    {
+        int temp = power((n - 1) / 2 ) % 20123;
+        return (temp * temp * 10) % 20123;
+    }
 }
